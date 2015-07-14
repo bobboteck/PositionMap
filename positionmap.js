@@ -54,16 +54,19 @@ var PositionMap = (function(container, parameters) {
 	
 	DrawBackground(gridSize);
 	
+	DrawStartPosition();
+	
 	/******************************************************
 	 * Private methods
 	 *****************************************************/
 	
 	/**
 	 * @desc Draw background grid 
+	 * @param size {Int} - The size of grid 
 	 */
 	function DrawBackground(size)
 	{
-		contextL1.lineWidth=1;
+		contextL1.lineWidth=0.5;
 		contextL1.strokeStyle = '#000';
 		contextL1.beginPath();
 		// Draw the orizontal line
@@ -79,6 +82,36 @@ var PositionMap = (function(container, parameters) {
 			contextL1.lineTo(x,canvasL1.height);
 		}
 		contextL1.stroke();
+	}
+	
+	function DrawStartPosition()
+	{
+		/*contextL3.beginPath();
+		contextL3.lineWidth=1;
+		contextL3.strokeStyle="#f00";
+		contextL3.arc(width/2,height/2,20,0,2*Math.PI);
+		contextL3.fillStyle="#f00";
+		contextL3.fill();
+		contextL3.stroke();*/
+		
+		contextL3.beginPath();
+		contextL3.moveTo((width/2)-20, (height/2)+20);//(100,100);
+		contextL3.lineTo(width/2, (height/2)-20);//(110,80);
+		contextL3.lineTo((width/2)+20, (height/2)+20);//(120,100);
+		contextL3.closePath();
+		contextL3.lineWidth=2;
+		contextL3.strokeStyle="#00f";
+		contextL3.fillStyle="#f00";
+		contextL3.fill();
+		contextL3.stroke();
+		
+/*		
+		contextL2.fillStyle = "#ff0000";
+		contextL2.fillRect(10,10, 100, 100);
+		contextL2.rotate( (Math.PI / 180) * 25);  //rotate 25 degrees.
+		contextL2.fillStyle = "#0000ff";
+		contextL2.fillRect(10,10, 100, 100);
+*/
 	}
 	
 	/******************************************************
@@ -99,7 +132,7 @@ var PositionMap = (function(container, parameters) {
 		contextL2.rect(80,100,20,20); 
 		contextL2.stroke();
 		
-		contextL3.beginPath();
+		/*contextL3.beginPath();
 		contextL3.moveTo(100,100);
 		contextL3.lineTo(110,80);
 		contextL3.lineTo(120,100);
@@ -107,6 +140,23 @@ var PositionMap = (function(container, parameters) {
 		contextL3.lineWidth=1;
 		contextL3.strokeStyle="#0000FF";
 		contextL3.stroke();
-		//contextL3.fill();
+		contextL3.fill();*/
+	};
+	
+	this.Move = function()
+	{
+		//contextL3.translate((width/2)+20, (height/2)+20);
+		contextL3.rotate((Math.PI / 180) * 25);
+		
+		contextL3.beginPath();
+		contextL3.moveTo((width/2)-20, (height/2)+20);//(100,100);
+		contextL3.lineTo(width/2, (height/2)-20);//(110,80);
+		contextL3.lineTo((width/2)+20, (height/2)+20);//(120,100);
+		contextL3.closePath();
+		contextL3.lineWidth=2;
+		contextL3.strokeStyle="#00f";
+		contextL3.fillStyle="#f00";
+		contextL3.fill();
+		contextL3.stroke();
 	};
 });

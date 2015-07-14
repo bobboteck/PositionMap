@@ -3,14 +3,14 @@ canvas {
 	position: absolute;
 }
 #CanvasL1 {
-	border:1px solid #f00;
+	/*border:1px solid #f00;*/
 	z-index:1
 }
 #CanvasL2 {
-	border:1px solid #0f0;
+	/*border:1px solid #0f0;*/
 	z-index:2
 }
 #CanvasL3 {
-	border:1px solid #00f;
+	/*border:1px solid #00f;*/
 	z-index:3
 }
