@@ -18,11 +18,13 @@
  * @param parameters (optional) - object with following keys:
  * 	width {Int} (optional) - The width of canvas, if not specified is setted at width of container object (Default value is the width of container object)
  * 	height {Int} (optional) - The height of canvas, if not specified is setted at height of container object (Default value is the height of container object)
+ *  gridSize {Int} (optional) - The size of background grid, if not specified is setted at default value (Default value is 50px)
  */
 var PositionMap = (function(container, parameters) {
 	parameters = parameters || {};
 	var width = (undefined === parameters.width ? 0 : parameters.width),
-		height = (undefined === parameters.height ? 0 : parameters.height);
+		height = (undefined === parameters.height ? 0 : parameters.height),
+		gridSize = (undefined === parameters.gridSize ? 50 : parameters.gridSize);
 	
 	// Create all Canvas element and add in the Container object
 	var objContainer = document.getElementById(container);
@@ -50,13 +52,46 @@ var PositionMap = (function(container, parameters) {
 	objContainer.appendChild(canvasL3);
 	var contextL3=canvasL3.getContext('2d');
 	
+	DrawBackground(gridSize);
+	
+	/******************************************************
+	 * Private methods
+	 *****************************************************/
+	
+	/**
+	 * @desc Draw background grid 
+	 */
+	function DrawBackground(size)
+	{
+		contextL1.lineWidth=1;
+		contextL1.strokeStyle = '#000';
+		contextL1.beginPath();
+		// Draw the orizontal line
+		for(var y=size;y<canvasL1.height;y+=size)
+		{
+			contextL1.moveTo(0,y);
+			contextL1.lineTo(canvasL1.width,y);
+		}
+		// Draw the vertical line
+		for(var x=size;x<canvasL1.width;x+=size)
+		{
+			contextL1.moveTo(x,0);
+			contextL1.lineTo(x,canvasL1.height);
+		}
+		contextL1.stroke();
+	}
+	
+	/******************************************************
+	 * Public methods
+	 *****************************************************/
+
 	this.DrawSimbols = function ()
 	{
-		contextL1.beginPath();
+		/*contextL1.beginPath();
 		contextL1.lineWidth=1;
 		contextL1.strokeStyle="#FF0000";
 		contextL1.arc(100,100,10,0,2*Math.PI);
-		contextL1.stroke();
+		contextL1.stroke();*/
 		
 		contextL2.beginPath();
 		contextL2.lineWidth=1;
