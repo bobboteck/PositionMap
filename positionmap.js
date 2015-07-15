@@ -94,7 +94,7 @@ var PositionMap = (function(container, parameters) {
 		contextL3.fill();
 		contextL3.stroke();*/
 		
-		contextL3.beginPath();
+		/*contextL3.beginPath();
 		contextL3.moveTo((width/2)-20, (height/2)+20);//(100,100);
 		contextL3.lineTo(width/2, (height/2)-20);//(110,80);
 		contextL3.lineTo((width/2)+20, (height/2)+20);//(120,100);
@@ -103,7 +103,11 @@ var PositionMap = (function(container, parameters) {
 		contextL3.strokeStyle="#00f";
 		contextL3.fillStyle="#f00";
 		contextL3.fill();
-		contextL3.stroke();
+		contextL3.stroke();*/
+		
+		var img = new Image();
+		img.src = 'http://bobboteck.github.io/positionmap/robot.png';
+		contextL3.drawImage(img, 100, 100);
 		
 /*		
 		contextL2.fillStyle = "#ff0000";
